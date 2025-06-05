@@ -1,5 +1,64 @@
 # AI Restaurant Consulting Platform - Advanced Backend Documentation
 
+**GitHub Repository**: [https://github.com/Tramona1/AIConsultant](https://github.com/Tramona1/AIConsultant)
+
+## Quick Start & Setup
+
+### Prerequisites
+- **Python 3.11+** for the backend
+- **Node.js 18+** for the Stagehand scraper
+- **API Keys** (see Environment Variables section below)
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Tramona1/AIConsultant.git
+   cd AIConsultant
+   ```
+
+2. **Backend Setup**:
+   ```bash
+   cd backend
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+3. **Frontend Setup** (Next.js):
+   ```bash
+   npm install
+   npm run dev  # Starts development server on http://localhost:3000
+   ```
+
+4. **Stagehand Scraper Setup**:
+   ```bash
+   cd stagehand-scraper
+   npm install
+   ```
+
+5. **Environment Configuration**:
+   - Copy `.env.example` to `.env` (if available) or create a new `.env` file
+   - Add your API keys (see Environment Variables section below)
+
+6. **Run the Backend**:
+   ```bash
+   cd backend
+   python main.py  # Starts FastAPI server on http://localhost:8000
+   ```
+
+### Project Structure
+```
+AIConsultant/
+├── backend/                          # Python FastAPI backend
+├── src/                             # Next.js frontend
+├── stagehand-scraper/               # Node.js scraping tools
+├── public/                          # Static assets
+└── README.md                        # Project overview
+```
+
+---
+
 This document provides a **super super in-depth** technical overview of the AI Restaurant Consulting Platform\'s backend, featuring the advanced **4-Phase Progressive Data Extraction System**. This system is meticulously designed for scalability, aiming to efficiently process 10,000+ restaurant websites by optimizing for speed, cost, and data quality.
 
 ## 1. Architecture Overview
@@ -245,7 +304,9 @@ The 4-Phase Progressive System is engineered for both high performance and cost-
 
 ## 7. Environment Variables
 
-Sensitive configurations and API keys are managed via a `.env` file loaded by `python-dotenv`.
+Sensitive configurations and API keys are managed via a `.env` file loaded by `python-dotenv`. **Never commit your `.env` file to the repository.**
+
+Create a `.env` file in the `backend/` directory with the following structure:
 
 ```dotenv
 # Core APIs
@@ -269,6 +330,57 @@ TWILIO_PHONE_NUMBER="YOUR_TWILIO_PHONE_NUMBER"
 # STAGEHAND_SOME_API_KEY="YOUR_STAGEHAND_SUB_SERVICE_KEY"
 ```
 *Note: `enhanced-scraper.js` might manage its own LLM provider keys internally or via its own .env configuration within the `stagehand-scraper` directory.*
+
+### Required API Keys for Core Functionality:
+- **GOOGLE_API_KEY**: Essential for Google Places API (competitor identification, business details)
+- **GEMINI_API_KEY**: Required for AI-powered data cleaning and visual analysis
+
+### Optional API Keys:
+- **BROWSERBASE_API_KEY**: For cloud-based browser automation (alternative to local Playwright)
+- **OPENAI_API_KEY**: For any OpenAI-based fallback analysis
+- **TWILIO_**: For SMS/communication features (if implemented)
+
+## 7.1. Development Workflow
+
+### Contributing to the Project
+
+1. **Fork the repository** on GitHub
+2. **Create a feature branch**:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes** with proper logging and tests
+4. **Test your changes**:
+   ```bash
+   # Backend tests
+   cd backend
+   python -m pytest
+   
+   # Run the comprehensive test
+   python test_comprehensive_extraction.py
+   ```
+5. **Commit with descriptive messages**:
+   ```bash
+   git add .
+   git commit -m "feat: add new extraction method for menu items"
+   ```
+6. **Push and create a Pull Request**
+
+### Development Best Practices
+
+- **Always add logging** when writing new code (as per user requirements)
+- **Follow the 4-phase architecture** when adding new extraction methods
+- **Update cost tracking** for any new API calls
+- **Add error handling** with graceful degradation
+- **Test with diverse restaurant websites** using `test_variety_restaurants.py`
+- **Document new environment variables** in this documentation
+
+### Local Development Tips
+
+- Use `python main.py` to start the FastAPI server with auto-reload
+- Check `backend/app.log` for detailed execution logs
+- Monitor API costs during development using the built-in cost tracking
+- Test the frontend with `npm run dev` for hot reloading
 
 ## 8. File Structure
 
@@ -350,5 +462,3 @@ The system incorporates several mechanisms to handle errors and ensure robustnes
 *   **Visual Data Flow Diagram**: For internal team understanding and onboarding, creating a visual data flow diagram illustrating the phases, modules, decision points, and data movement would be highly beneficial.
 
 This advanced progressive data extraction system represents a significant step towards building a highly scalable and intelligent platform for restaurant AI consulting. Its modular design, focus on data quality, and cost optimization strategies provide a solid foundation for future growth and innovation.
-
-</rewritten_file>
