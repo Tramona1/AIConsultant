@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ restaurant_name }} - AI Strategic Business Analysis</title>
+    <style>
+        {{ css_content }}
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover-page">
+        <div class="cover-header">
+            <div class="logo-area">
+                <h1>🤖 Restaurant AI Consulting</h1>
+                <p class="tagline">McKinsey-Level Strategic Analysis</p>
+            </div>
+            <h2 class="restaurant-title">{{ restaurant_name }}</h2>
+            <p class="restaurant-subtitle">{{ restaurant_address }}</p>
+            <p class="report-subtitle">Competitive Intelligence & Strategic Growth Analysis</p>
+        </div>
+        
+        <div class="cover-hook">
+            <div class="hook-box">
+                <h3>💰 Executive Strategic Summary</h3>
+                <p class="hook-text">{{ executive_hook }}</p>
+                {% if biggest_opportunity_teaser %}
+                <p class="opportunity-teaser">🎯 <strong>Biggest Opportunity:</strong> {{ biggest_opportunity_teaser }}</p>
+                {% endif %}
+                <div class="confidence-badge">
+                    <span>✅ LLMA-6 AI Analysis</span>
+                    <span>📊 {{ competitors_analyzed }} Local Competitors</span>
+                    <span>🔍 {{ data_points_analyzed }}+ Data Points</span>
+                    <span>🎯 Quality Score: {{ ai_analysis_depth_score }}/10</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cover-stats">
+            <div class="stat-item">
+                <div class="stat-number">{{ data_points_analyzed }}</div>
+                <div class="stat-label">Data Points Analyzed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ competitors_analyzed }}</div>
+                <div class="stat-label">Competitors Researched</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ opportunities_count }}</div>
+                <div class="stat-label">Growth Opportunities</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ screenshots_analyzed }}</div>
+                <div class="stat-label">Screenshots Analyzed</div>
+            </div>
+        </div>
+        
+        <div class="cover-footer">
+            <p>Generated on {{ analysis_date }} | {{ llm_analysis_version }} Strategic Engine</p>
+            <p class="cta-text">📞 Ready to implement? Schedule your free consultation</p>
+        </div>
+    </div>
+    
+    <!-- Executive Summary Page -->
+    <div class="page content-page">
+        <h2 class="page-title">📊 Executive Summary & Business Snapshot</h2>
+        
+        <div class="restaurant-overview">
+            <h3>{{ restaurant_name }}</h3>
+            <div class="overview-details">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <strong>📍 Location:</strong> {{ restaurant_address }}
+                    </div>
+                    <div class="detail-item">
+                        <strong>🌐 Website:</strong> {{ restaurant_website }}
+                    </div>
+                    {% if restaurant_phone %}
+                    <div class="detail-item">
+                        <strong>📞 Phone:</strong> {{ restaurant_phone }}
+                    </div>
+                    {% endif %}
+                    {% if cuisine_types %}
+                    <div class="detail-item">
+                        <strong>🍽️ Cuisine:</strong> {{ cuisine_types|join(', ') }}
+                    </div>
+                    {% endif %}
+                    {% if price_range %}
+                    <div class="detail-item">
+                        <strong>💰 Price Range:</strong> {{ price_range }}
+                    </div>
+                    {% endif %}
+                    <div class="detail-item">
+                        <strong>📋 Menu Items:</strong> {{ menu_items_count }} analyzed
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if competitive_introduction %}
+        <div class="competitive-introduction">
+            <h3>🎯 Strategic Position Analysis</h3>
+            <div class="intro-box">
+                <p>{{ competitive_introduction }}</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if charts.ratings_comparison %}
+        <div class="chart-section">
+            <h4>📈 Performance vs. Competition</h4>
+            <div class="chart-container">
+                <img src="data:image/png;base64,{{ charts.ratings_comparison }}" alt="Competitive Performance Analysis" class="chart-image"/>
+                <p class="chart-caption">Your competitive position relative to local market leaders</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if competitive_insights %}
+        <div class="key-findings">
+            <h4>🎯 Key Strategic Insights</h4>
+            <div class="findings-grid">
+                {% for insight in competitive_insights %}
+                <div class="insight-card">
+                    <div class="insight-icon">{{ insight.icon }}</div>
+                    <h5>{{ insight.title }}</h5>
+                    <p>{{ insight.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Competitive Landscape Deep Dive Page -->
+    <div class="page content-page">
+        <h2 class="page-title">🏆 Competitive Landscape Analysis</h2>
+        <p class="page-subtitle">Comprehensive market positioning and opportunity identification</p>
+        
+        <div class="competitive-analysis-section">
+            <div class="analysis-content">
+                <p>{{ competitive_landscape_summary }}</p>
+            </div>
+            
+            {% if competitive_key_takeaway %}
+            <div class="key-takeaway-box">
+                <h4>🎯 Strategic Takeaway for You</h4>
+                <p>{{ competitive_key_takeaway }}</p>
+            </div>
+            {% endif %}
+        </div>
+        
+        {% if charts.business_intelligence %}
+        <div class="chart-section">
+            <h4>📊 Competitive Intelligence Dashboard</h4>
+            <div class="chart-container">
+                <img src="data:image/png;base64,{{ charts.business_intelligence }}" alt="Business Intelligence Metrics" class="chart-image"/>
+                <p class="chart-caption">Comprehensive analysis across {{ data_points_analyzed }} data points</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if charts.menu_distribution %}
+        <div class="chart-section">
+            <h4>🍽️ Menu Strategy Analysis</h4>
+            <div class="chart-container">
+                <img src="data:image/png;base64,{{ charts.menu_distribution }}" alt="Menu Strategy Analysis" class="chart-image"/>
+                <p class="chart-caption">Strategic distribution of your {{ menu_items_count }} menu items</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Strategic Growth Opportunities Pages (1-3) -->
+    {% for opportunity in prioritized_opportunities %}
+    <div class="page content-page opportunity-page">
+        <h2 class="page-title">🚀 Growth Opportunity #{{ opportunity.priority_rank }}</h2>
+        <div class="opportunity-full-analysis">
+            <div class="opportunity-header">
+                <h3 class="opportunity-title">{{ opportunity.opportunity_title }}</h3>
+                <div class="opportunity-meta">
+                    <span class="timeline-badge">⏱️ {{ opportunity.implementation_timeline }}</span>
+                    <span class="difficulty-badge">🎯 {{ opportunity.difficulty_level }}</span>
+                </div>
+            </div>
+            
+            <div class="opportunity-sections">
+                <div class="problem-section">
+                    <h4>❌ Current Situation & Challenge</h4>
+                    <div class="content-box">
+                        <p>{{ opportunity.current_situation_and_problem }}</p>
+                    </div>
+                </div>
+                
+                <div class="solution-section">
+                    <h4>✅ Detailed Strategic Recommendation</h4>
+                    <div class="content-box">
+                        <p>{{ opportunity.detailed_recommendation }}</p>
+                    </div>
+                </div>
+                
+                <div class="impact-section">
+                    <h4>💰 Revenue & Profit Impact Analysis</h4>
+                    <div class="impact-box">
+                        <p>{{ opportunity.estimated_revenue_or_profit_impact }}</p>
+                    </div>
+                </div>
+                
+                <div class="ai-solution-section">
+                    <h4>🤖 AI Platform Implementation</h4>
+                    <div class="ai-solution-box">
+                        <p>{{ opportunity.ai_solution_pitch }}</p>
+                        <button class="ai-cta-btn">Get AI Implementation Quote</button>
+                    </div>
+                </div>
+                
+                {% if opportunity.visual_evidence_suggestion %}
+                <div class="visual-evidence-section">
+                    <h4>📸 Visual Evidence & Implementation Guide</h4>
+                    <div class="visual-suggestion-box">
+                        {% set visual_suggestion = opportunity.visual_evidence_suggestion %}
+                        {% if visual_suggestion.idea_for_visual %}
+                        <p><strong>Implementation Visual:</strong> {{ visual_suggestion.idea_for_visual }}</p>
+                        {% endif %}
+                        {% if visual_suggestion.relevant_screenshot_s3_url_from_input %}
+                        <div class="evidence-screenshot">
+                            <img src="{{ visual_suggestion.relevant_screenshot_s3_url_from_input }}" alt="Current State Evidence" class="evidence-image"/>
+                            <p class="screenshot-note">Current state analysis for improvement opportunity</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <!-- Forward-Thinking Strategic Insights Page -->
+    {% if untapped_innovation_ideas or long_term_strategic_thoughts or empowerment_message %}
+    <div class="page content-page innovation-page">
+        <h2 class="page-title">🔮 Forward-Thinking Strategic Insights</h2>
+        <p class="page-subtitle">Innovation opportunities and long-term vision alignment</p>
+        
+        {% if untapped_innovation_ideas %}
+        <div class="innovation-section">
+            <h3>💡 Untapped Potential & Innovation Ideas</h3>
+            <div class="innovation-list">
+                {% for idea in untapped_innovation_ideas %}
+                <div class="innovation-item">
+                    <div class="innovation-marker">💡</div>
+                    <p>{{ idea }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if long_term_strategic_thoughts %}
+        <div class="long-term-section">
+            <h3>🎯 Long-Term Vision Alignment</h3>
+            <div class="vision-list">
+                {% for thought in long_term_strategic_thoughts %}
+                <div class="vision-item">
+                    <div class="vision-marker">🎯</div>
+                    <p>{{ thought }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if empowerment_message %}
+        <div class="empowerment-section">
+            <h3>🌟 Your Path to Success</h3>
+            <div class="empowerment-box">
+                <p>{{ empowerment_message }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    <!-- Screenshots Analysis Page -->
+    {% if formatted_screenshots %}
+    <div class="page content-page">
+        <h2 class="page-title">👁️ Digital Presence Analysis</h2>
+        <p class="page-subtitle">AI-powered analysis of your online touchpoints</p>
+        
+        <div class="screenshots-grid">
+            {% for screenshot in formatted_screenshots[:4] %}
+            <div class="screenshot-analysis">
+                <div class="screenshot-container">
+                    <img src="{{ screenshot.s3_url }}" alt="{{ screenshot.caption }}" class="screenshot-image"/>
+                    <div class="screenshot-overlay">
+                        <div class="quality-score">Quality: {{ "%.1f"|format(screenshot.quality_score) }}/5.0</div>
+                    </div>
+                </div>
+                <div class="screenshot-insights">
+                    <h4>{{ screenshot.caption }}</h4>
+                    <p class="page-type">{{ screenshot.page_type|title }} Analysis</p>
+                    <p class="analysis-insight">{{ screenshot.analysis_insight }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Premium Content Teasers Page -->
+    {% if premium_insights_teasers %}
+    <div class="page content-page premium-page">
+        <h2 class="page-title">🔒 Premium Strategic Intelligence</h2>
+        <p class="page-subtitle">Unlock deeper analysis and personalized AI-powered recommendations</p>
+        
+        <div class="premium-grid">
+            {% for teaser in premium_insights_teasers %}
+            <div class="premium-card">
+                <div class="premium-header">
+                    <h4>{{ teaser.title }}</h4>
+                    <span class="premium-badge">Premium</span>
+                </div>
+                <div class="premium-preview">
+                    <p>{{ teaser.teaser }}</p>
+                </div>
+                <div class="premium-value">
+                    <p class="value-prop">{{ teaser.value_proposition }}</p>
+                </div>
+                <div class="premium-cta">
+                    <button class="upgrade-btn">Unlock Full Analysis</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="upgrade-section">
+            <h3>🚀 Transform Your Restaurant with AI-Powered Intelligence</h3>
+            <p>Our premium analysis includes competitor intelligence, automated review management, dynamic pricing strategies, menu optimization AI, and personalized implementation roadmaps.</p>
+            <div class="upgrade-benefits">
+                <div class="benefit-item">✅ Real-time competitor monitoring</div>
+                <div class="benefit-item">✅ Automated customer review responses</div>
+                <div class="benefit-item">✅ Dynamic pricing optimization</div>
+                <div class="benefit-item">✅ Menu performance analytics</div>
+                <div class="benefit-item">✅ Personalized growth roadmap</div>
+                <div class="benefit-item">✅ Monthly strategic updates</div>
+            </div>
+            <button class="main-upgrade-btn">Upgrade to Premium Analysis</button>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Action Items & Next Steps Page -->
+    <div class="page content-page action-page">
+        <h2 class="page-title">✅ Immediate Action Items & Implementation</h2>
+        <p class="page-subtitle">Start implementing these zero-budget, high-impact recommendations today</p>
+        
+        {% if immediate_action_items %}
+        <div class="action-items-section">
+            <h3>🚀 Quick Wins (0-2 Hours Each)</h3>
+            <div class="action-items-grid">
+                {% for action in immediate_action_items %}
+                <div class="action-item">
+                    <div class="action-number">{{ loop.index }}</div>
+                    <div class="action-content">
+                        {% if action and action|string and "|" in (action|string) %}
+                        {% set action_parts = (action|string).split("|") %}
+                        <p class="action-task">{{ action_parts[0].strip() }}</p>
+                        <p class="action-rationale">{{ action_parts[1].strip() }}</p>
+                        {% else %}
+                        <p class="action-task">{{ (action|string) if action else "Strategic recommendation" }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="action-status">
+                        <input type="checkbox" class="action-checkbox">
+                        <label>Mark Complete</label>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if consultation_questions %}
+        <div class="consultation-section">
+            <h3>💬 Let's Discuss Your Specific Growth Strategy</h3>
+            <p>We'd love to learn more about your unique challenges and growth goals:</p>
+            <div class="questions-list">
+                {% for question in consultation_questions %}
+                <div class="question-item">
+                    <span class="question-marker">❓</span>
+                    <p>{{ question }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="consultation-cta">
+                <button class="consultation-btn">Schedule Free 30-Minute Strategy Session</button>
+                <p class="consultation-note">No sales pitch - just strategic insights tailored to your restaurant</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Footer Page -->
+    <div class="page footer-page">
+        <div class="footer-content">
+            <h2>🤖 Restaurant AI Consulting</h2>
+            <p class="footer-tagline">Transforming Restaurant Success Through Strategic AI</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h4>📧 Strategic Partnership</h4>
+                    <p>hello@restaurant-ai-consulting.com</p>
+                    <p>Let's discuss your growth strategy</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📞 Free Consultation</h4>
+                    <p>Book your complimentary strategy session</p>
+                    <p>No commitment, just insights</p>
+                </div>
+                <div class="contact-item">
+                    <h4>🌐 AI Platform Demo</h4>
+                    <p>restaurant-ai-consulting.com/demo</p>
+                    <p>See our AI tools in action</p>
+                </div>
+            </div>
+            
+            <div class="footer-stats">
+                <h3>📊 This Analysis By The Numbers</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">{{ data_points_analyzed }}</span>
+                        <span class="stat-label">Data Points</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">{{ competitors_analyzed }}</span>
+                        <span class="stat-label">Competitors</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">{{ opportunities_count }}</span>
+                        <span class="stat-label">Opportunities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">{{ ai_analysis_depth_score }}/10</span>
+                        <span class="stat-label">Quality Score</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-disclaimer">
+                <p><strong>Strategic Analysis Report | Generated {{ analysis_date }}</strong></p>
+                <p>Powered by {{ llm_analysis_version }} Strategic Intelligence Engine</p>
+                <p class="disclaimer-text">This analysis is based on publicly available data and AI-powered strategic insights. Revenue projections and recommendations are estimates based on industry best practices, competitive analysis, and proven growth strategies. Individual results may vary based on market conditions, implementation quality, and business-specific factors.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

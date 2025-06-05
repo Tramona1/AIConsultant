@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frontend API Test</title>
+</head>
+<body>
+    <h1>Frontend API Test</h1>
+    <button onclick="testAPI()">Test API Call</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            console.log('🔥 Testing API call...');
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+
+            try {
+                console.log('📡 Making API call to backend...');
+                const response = await fetch('http://127.0.0.1:8000/analyze-restaurant-progressive', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        url: 'https://www.slapfishrestaurant.com',
+                        email: 'test@test.com',
+                        restaurant_name: '',
+                        address: ''
+                    }),
+                });
+
+                console.log('📬 Response received:', response.status, response.statusText);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('📊 Data received:', data);
+                
+                resultDiv.innerHTML = `
+                    <h2>✅ Success!</h2>
+                    <p><strong>Restaurant:</strong> ${data.data_extraction?.restaurant_data?.name || 'Unknown'}</p>
+                    <p><strong>Address:</strong> ${data.data_extraction?.restaurant_data?.address || 'Not found'}</p>
+                    <p><strong>Phone:</strong> ${data.data_extraction?.restaurant_data?.phone || 'Not found'}</p>
+                    <p><strong>PDF Success:</strong> ${data.pdf_report?.success ? 'Yes' : 'No'}</p>
+                `;
+
+            } catch (error) {
+                console.error("❌ API error:", error);
+                resultDiv.innerHTML = `<p style="color: red;">❌ Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html> 

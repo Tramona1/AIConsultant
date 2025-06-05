@@ -10,6 +10,10 @@
 !.yarn/releases
 !.yarn/versions
 
+# Node modules - anywhere in the project
+node_modules/
+**/node_modules/
+
 # testing
 /coverage
 
@@ -32,6 +36,26 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 
 # vercel
 .vercel
@@ -39,3 +63,31 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Backend specific
+backend/.env*
+backend/__pycache__/
+backend/*.pyc
+
+# Analysis data and generated files (more comprehensive)
+**/analysis_data/
+**/generated_pdfs/
+**/menus/
+**/downloads/
+**/screenshots/
+**/consolidated_screenshots/
+**/tmp/
+
+# Log files
+*.log
+backend/*.log
+backend/comprehensive_test_*.log
+
+# Scraper result files
+stagehand-scraper/*.json
+stagehand-scraper/*.png
+stagehand-scraper/*.log
+
+# Temporary files
+*.tmp
+*.temp

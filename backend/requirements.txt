@@ -1,0 +1,63 @@
+# Core FastAPI and web framework
+fastapi==0.111.0
+uvicorn==0.30.1
+python-multipart==0.0.20
+python-dotenv==1.0.1
+
+# HTTP client and async support
+httpx==0.28.1
+aiofiles==24.1.0
+asyncio
+
+# Data validation and serialization
+pydantic==2.7.4
+
+# Web scraping and browser automation
+playwright==1.52.0
+beautifulsoup4==4.12.3
+lxml
+
+# AI and LLM integrations
+openai==1.82.1
+google-generativeai==0.8.3
+
+# Google services
+googlemaps==4.10.0
+
+# Communication services
+twilio==9.3.0
+elevenlabs==1.7.0
+
+# PDF processing and generation
+pymupdf==1.24.12
+weasyprint==65.1
+pillow==11.2.1
+
+# Data processing and analysis
+pandas==2.2.3
+numpy==2.2.6
+matplotlib==3.10.3
+seaborn==0.13.2
+
+# Utility libraries
+requests==2.32.3
+tqdm==4.67.1
+pathlib
+datetime
+
+# AI and ML utilities
+nltk==3.9.1
+textblob==0.19.0
+
+# Cloud and AWS
+boto3==1.34.125
+
+# Template engine
+jinja2==3.1.6
+
+# Retry logic and error handling
+tenacity==9.1.2
+
+# Additional utilities
+rich==14.0.0
+joblib==1.5.1
